@@ -119,31 +119,34 @@ function App() {
   return (
     <div className="App">
       <h1>25 + 5 Clock</h1>
-      <h2 id="break-label">Break Length</h2>
-      <h2 id="session-label">Session Length</h2>
-      <button id="break-decrement" onClick={decrementPaus}>
-        Break decrement
-      </button>
-      <button id="session-decrement" onClick={decrementArbetsperiod}>
-        Session decrement
-      </button>
-      <button id="break-increment" onClick={incrementPaus}>
-        Break increment
-      </button>
-      <button id="session-increment" onClick={incrementArbetsperiod}>
-        Session increment
-      </button>
-      <div id="break-length">{Math.floor(längdPåPausperiod / 60)}</div>
-      <div id="session-length">{Math.floor(längdPåArbetsperiod / 60)}</div>
-      <h2 id="timer-label">Session</h2>
-
-      <div id="paus-left">
-        {" "}
-        PAUS: {Math.floor(pausKvar / 60)}:{("0" + (pausKvar % 60)).slice(-2)}
+      <div className="settings-container">
+        <div className="length-control">
+          <h2 id="session-label">Session Length</h2>
+          <div id="session-length">{Math.floor(längdPåArbetsperiod / 60)}</div>
+          <button id="session-increment" onClick={incrementArbetsperiod}>
+            Session increment
+          </button>
+          <button id="session-decrement" onClick={decrementArbetsperiod}>
+            Session decrement
+          </button>
+        </div>
+        <div className="length-control">
+          <h2 id="break-label">Break Length</h2>
+          <div id="break-length">{Math.floor(längdPåPausperiod / 60)}</div>
+          <button id="break-increment" onClick={incrementPaus}>
+            Break increment
+          </button>
+          <button id="break-decrement" onClick={decrementPaus}>
+            Break decrement
+          </button>
+        </div>
       </div>
-
+      <h2 id="timer-label">Session</h2>
       <div id="time-left">
         WORK: {Math.floor(tidKvar / 60)}:{("0" + (tidKvar % 60)).slice(-2)}
+      </div>
+      <div id="paus-left">
+        PAUS: {Math.floor(pausKvar / 60)}:{("0" + (pausKvar % 60)).slice(-2)}
       </div>
       <button id="start_stop" onClick={toggleTimer}>
         Starta Timer
